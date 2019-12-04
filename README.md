@@ -1,7 +1,6 @@
 # rz-vue-excel
 基于vue实现导出excel表格功能
-> 使用到文件 Blob.js Export2Excel.js
-
+> 使用到文件 Blob.js Export2Excel.js  进行的二次封装，方便全局
 
 ### use
 ```js
