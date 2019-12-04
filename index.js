@@ -1,8 +1,4 @@
 
-const {
-  export_json_to_excel
-} = require("./excel/Export2Excel");
-
 function formatJson(filterVal, jsonData) {
   return jsonData.map(v => filterVal.map(j => v[j]));
 }
@@ -14,14 +10,17 @@ class Excel {
     this.list = params.list
     this.fileName = params.fileName;
   }
-
-
-
   export_excel() {
-    
-    // if (!this.header) throw 'header'
-
-    return export_json_to_excel(this.header, formatJson(this.filterVal, this.list), this.fileName)
+    require.ensure([], async () => {
+      const {
+        export_json_to_excel
+      } = require("./excel/Export2Excel.js");
+      export_json_to_excel(
+        this.header,
+        formatJson(this.filterVal, this.list),
+        this.fileName
+      );
+    });
   }
 }
 
